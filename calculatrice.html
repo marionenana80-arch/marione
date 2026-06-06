@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	 <style>
+        body{
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f2f2f2;
+        }
+
+        .calculatrice{
+            background: pink;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 10px 10px 10px gray;
+        }
+
+        input{
+            width: 100%;
+            height: 50px;
+            margin-bottom: 10px;
+            font-size: 20px;
+            text-align: right;
+        }
+
+        button{
+            width: 60px;
+            height: 60px;
+            margin: 5px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+    </style>
+
+    <script>
+
+    	   function envoie(nombre) {
+            document.getElementById("ecran").value += nombre;
+        }
+        function calculer(){
+        expression = document.getElementById("ecran").value;
+
+        let operateur;
+
+         if (expression.includes("+")) operateur = "+";
+         else if (expression.includes("-")) operateur = "-";
+         else if (expression.includes("*")) operateur = "*";
+         else if (expression.includes("/")) operateur = "/";
+
+         parties = expression.split(operateur);
+
+        let n1 = parseFloat(parties[0]);
+        let n2 = parseFloat(parties[1]);
+
+         let resultat;
+
+switch (operateur) {
+    case "+":
+        resultat = n1 + n2;
+        break;
+
+    case "-":
+        resultat = n1 - n2;
+        break;
+
+    case "*":
+        resultat = n1 * n2;
+        break;
+
+    case "/":
+        resultat = n2 !== 0 ? n1 / n2 : "Erreur";
+        break;
+        document.getElementById("ecran").value = resultat;
+}
+document.getElementById("ecran").value = resultat;
+
+         }
+    </script>
+
+</head>
+<body>
+	    <form class="calculatrice">
+        <input type="text" id="ecran" placeholder="0"><br><br>
+
+            <button type="button" onclick="envoie('7')">7</button>
+            <button type="button" onclick="envoie('8')">8</button>
+            <button type="button" onclick="envoie('9')">9</button>
+            <button type="button" onclick="envoie('+')">+</button>
+            <br><br>
+
+            <button type="button" onclick="envoie('4')">4</button>
+            <button type="button" onclick="envoie('5')">5</button>
+            <button type="button" onclick="envoie('6')">6</button>
+            <button type="button" onclick="envoie('-')">-</button>
+            <br><br>
+
+            <button type="button" onclick="envoie('1')">1</button>
+            <button type="button" onclick="envoie('2')">2</button>
+            <button type="button" onclick="envoie('3')">3</button>
+            <button type="button" onclick="envoie('*')">*</button> 
+            <br><br>
+
+            <button type="button" onclick="envoie('0')">0</button>
+            <button type="button" onclick="envoie('c')">C</button>
+            <button type="button" onclick="calculer()">=</button>
+            <button type="button" onclick="envoie('/')">/</button>
+      
+    </form>
+
+</body>
+</html>
